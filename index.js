@@ -1,14 +1,16 @@
-const express = require('express');
+const express = require('express')
 const app = express();
-const bookRoutes = require('./routes/bookRoutes');
-const swaggerJsdoc = require('swagger-jsdoc');
-const swaggerUi = require('swagger-ui-express');
-
-// Настройки Express
+const swaggerJsdoc = require('swagger-jsdoc')
+const swaggerUi = require('swagger-ui-express')
+const categoryRoutes = require('./routes/categoryRoutes')
+const authorRoutes = require('./routes/authorRoutes')
+const bookRoutes = require('./routes/bookRoutes')
+// Настройки Expres
 app.use(express.json());
 
 // Подключение маршрутов
-app.use('/api', bookRoutes); // Указываем префикс для маршрута
+
+require("./routes/categoryRoutes")(app);
 
 // Генерация спецификации Swagger
 const options = {

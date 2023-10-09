@@ -18,9 +18,6 @@ const Book = sequelize.define('Book', {
     type: DataTypes.DATE,
     allowNull: false,
   },
-  thumbnailUrl: {
-    type: DataTypes.STRING,
-  },
   shortDescription: {
     type: DataTypes.TEXT,
   },
