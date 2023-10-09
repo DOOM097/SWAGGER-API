@@ -8,7 +8,7 @@ const Author = connection.define('Author', {
         allowNull: false,
         primaryKey: true,
         
-        autoIncrement: true, //значение этого столбца должно автоматически увеличиваться при каждой вставке новой записи в таблицу
+        autoIncrement: true,
         field: 'author_id'
     },
     name: {

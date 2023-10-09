@@ -1,19 +1,43 @@
-const express = require('express');
-const router = express.Router();
-const authorController = require('../controllers/authorController');
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Author:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: integer
+ *         name:
+ *           type: string
+ */
+
 /**
  * @swagger
  * /api/authors:
  *   get:
- *     summary: Получить список всех авторов
+ *     summary: Получить список авторов.
  *     responses:
  *       200:
- *         description: Успешный ответ
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/models/author.js'
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/Author'
  */
-router.get('/authors', authorController.getAllAuthors);
 
-module.exports = router;
+
+module.exports=app=>{
+    const authors = require("../controllers/authorController")
+    const router = require("express").Router()
+
+    router.post("/", authors.create)
+
+    router.get("/", authors.findAll)
+
+    app.use('/api/authors', router)
+
+}   

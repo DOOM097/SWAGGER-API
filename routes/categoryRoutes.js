@@ -9,10 +9,8 @@
  *           properties:
  *               id:
  *                   type: integer
- *                   description: The auto-generated id of the category.
  *               name:
  *                   type: string
- *                   description: The name of category.
  *               example:
  *                   name: RESTful API
  *  
@@ -40,18 +38,12 @@
  *                       id:
  *                         type: integer
  *                         description: The category ID.
- *                         example: 1
- *                       name:
- *                         type: string
- *                         description: The category`s name.
- *                         example: RESTful API
  * 
  */
 
 module.exports=app=>{
     const categories = require("../controllers/categoryController")
     const router = require("express").Router()
-
 
     router.post("/", categories.create)
 

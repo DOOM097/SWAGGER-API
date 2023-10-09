@@ -7,32 +7,21 @@
  *       properties:
  *         id:
  *           type: integer
- *           description: The auto-generated id of the book.
  *         title:
  *           type: string
- *           description: The title of the book.
  *         isbn:
  *           type: string
- *           description: The ISBN of the book.
  *         pageCount:
  *           type: integer
- *           description: The number of pages in the book.
  *         publishedDate:
  *           type: string
  *           format: date
- *           description: The published date of the book.
- *         thumbnailUrl:
- *           type: string
- *           description: URL of the book's thumbnail.
  *         shortDescription:
  *           type: string
- *           description: Short description of the book.
  *         longDescription:
  *           type: string
- *           description: Long description of the book.
  *         status:
  *           type: string
- *           description: The status of the book.
  */
 
 /**
@@ -56,10 +45,15 @@
  */
 
 const express = require('express');
-const router = express.Router();
-const bookController = require('../controllers/bookController');
+const router = express.Router(); // Создаем экземпляр Router
 
+// Определение маршрутов
+router.post("/", (req, res) => {
+  // Обработка запроса POST
+});
 
-router.get('/books', bookController.getAllBooks);
+router.get("/", (req, res) => {
+  // Обработка запроса GET
+});
 
-module.exports = router;
+module.exports = router; // Экспортируем router, а не app
