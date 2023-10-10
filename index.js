@@ -1,42 +1,14 @@
-const express = require('express')
+const express = require('express');
 const app = express();
-const swaggerJsdoc = require('swagger-jsdoc')
-const swaggerUi = require('swagger-ui-express')
-const categoryRoutes = require('./routes/categoryRoutes');
-const authorRoutes = require('./routes/authorRoutes');
 const bookRoutes = require('./routes/bookRoutes');
+const Book = require('./models/book');
+app.use(express.json());
 
+// Подключение маршрутов для операций с книгами
+app.use('/api', bookRoutes);
 
-app.use('/api/authors', authorRoutes);
-app.use('/api/books', bookRoutes);
-app.use('/api/category', categoryRoutes);
+// Другие настройки и маршруты вашего приложения
 
-// Генерация спецификации Swagger
-const options = {
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'Library Example Express API with Swagger',
-      version: '0.1.0',
-      description: 'This is a simple CRUD API application made with Express and documented with Swagger',
-    },
-    servers: [
-      {
-        url: 'http://localhost:3000/',
-        description: 'Development server',
-      },
-    ],
-  },
-  apis: ['./routes/*'], // Путь к вашим файлам маршрутов
-};
-
-const specs = swaggerJsdoc(options);
-
-// Роут для документации Swagger
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
-
-// Запуск сервера
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Сервер запущен на порту ${PORT}`);
+app.listen(3000, () => {
+  console.log('Сервер запущен на порту 3000');
 });
